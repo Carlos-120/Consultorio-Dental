@@ -1,20 +1,36 @@
-const Register = () => {
-  return (
-    <div className="flex justify-center items-center h-screen bg-blue-50">
-      <form className="bg-white p-8 rounded shadow-md w-96 space-y-4">
-        <h2 className="text-2xl font-bold text-center text-blue-600">Crear Cuenta</h2>
-        <input type="text" placeholder="Nombre completo" className="w-full p-2 border rounded" />
-        <input type="email" placeholder="Correo electrónico" className="w-full p-2 border rounded" />
-        <input type="password" placeholder="Contraseña" className="w-full p-2 border rounded" />
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-          Registrarse
-        </button>
-        <p className="text-center text-sm text-gray-600">
-          ¿Ya tienes cuenta? <a href="/login" className="text-blue-500 hover:underline">Inicia sesión</a>
-        </p>
-      </form>
-    </div>
-  );
-};
+// src/components/RegisterForm.js
+import React, { useState } from "react";
+import { register } from "../services/authServices";
 
-export default Register;
+export default function Register() {
+  const [correo, setCorreo] = useState("");
+  const [password, setPassword] = useState("");
+  const [rol, setRol] = useState("doctor");
+  const [mensaje, setMensaje] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await register({ correo, password, rol });
+      setMensaje("¡Usuario registrado con éxito!");
+    } catch (error) {
+      setMensaje(error.response?.data?.mensaje || "Error al registrar.");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="email" placeholder="Correo" value={correo} onChange={e => setCorreo(e.target.value)} required />
+      <input type="password" placeholder="Contraseña" value={password} onChange={e => setPassword(e.target.value)} required />
+      <select value={rol} onChange={e => setRol(e.target.value)}>
+        <option value="admin">Admin</option>
+        <option value="doctor">Doctor</option>
+        <option value="secretaria">Secretario/a</option>
+      </select>
+      <button type="submit">Registrarse</button>
+      <div>{mensaje}</div>
+    </form>
+  );
+}
+
+

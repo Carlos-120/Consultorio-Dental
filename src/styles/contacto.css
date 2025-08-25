@@ -1,0 +1,72 @@
+#contacto {
+  padding-block: clamp(3rem, 7vw, 6rem);
+  background: linear-gradient(180deg, var(--teal-100), #fff);
+  border-radius: var(--radius);
+}
+
+#contacto h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--brand-700);
+}
+
+#contacto p {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-600);
+  margin-bottom: 2rem;
+}
+
+#contacto form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+  background: var(--surface);
+  padding-right: 4rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+#contacto label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--text-900);
+}
+
+#contacto input,
+#contacto textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,.10);
+  box-shadow: 0 1px 0 rgba(16,24,40,.02) inset;
+  font-family: inherit;
+  transition: 0.2s ease;
+}
+
+#contacto input:focus,
+#contacto textarea:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 4px rgba(30,144,255,0.15);
+  outline: none;
+}
+
+#contacto button {
+  background: var(--teal-500);
+  color: white;
+  font-weight: 600;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#contacto button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}

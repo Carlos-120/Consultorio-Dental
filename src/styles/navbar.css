@@ -1,0 +1,143 @@
+:root{
+  --brand-900:#0f172a;   /* azul muy oscuro / pizarra */
+  --teal-500:#14b8a6;    /* acento */
+  --emerald-600:#059669; /* botón verde */
+  --emerald-700:#047857;
+  --blue-600:#2563eb;
+  --blue-700:#1e40af;
+  --bg:#f6f8fb;
+  --text:#ecf0f1;
+}
+
+
+.main-content{
+  /* si usas un <main> al lado del nav, dale espacio con padding-left */
+  padding: 20px;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* ===== NAVBAR LATERAL (scroll en la lista) ===== */
+.navbar{
+  position: fixed;
+  inset: 0 auto 0 0;     /* top:0; right:auto; bottom:0; left:0 */
+  width: 250px;
+  background: var(--brand-900);
+  color: #fff;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* header | body (scroll) | footer */
+  z-index: 100;
+  box-shadow: 4px 0 6px rgba(0,0,0,.1);
+}
+
+/* Header (logo) */
+.nav-header{
+  padding: 24px 20px 12px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.brand{
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: .2px;
+}
+.brand:hover{ color: #e5e7eb; }
+
+/* Cuerpo scrolleable */
+.nav-body{
+  min-height: 0;               /* CLAVE para permitir scroll en grid */
+  overflow-y: auto;            /* <-- scroll vertical aquí */
+  overflow-x: hidden;
+  padding: 10px 6px;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+.nav-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Links */
+.nav-link{
+  display: block;
+  padding: 10px 14px;
+  margin: 4px 8px;
+  color: var(--text);
+  background: transparent;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color .2s ease, color .2s ease;
+}
+.nav-link:hover{
+  background: var(--teal-500);
+  color: #fff;
+}
+.nav-link.active{
+  background: rgba(255,255,255,.14);
+  color: #fff;
+}
+
+/* Botones estilo link */
+.btn{
+  display: block;
+  text-align: center;
+  padding: 10px 14px;
+  margin: 6px 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary{
+  background: var(--blue-600);
+  color: #fff;
+}
+.btn-primary:hover{ background: var(--blue-700); }
+
+.btn-emerald{
+  background: var(--emerald-600);
+  color: #fff;
+}
+.btn-emerald:hover{ background: var(--emerald-700); }
+
+/* Footer (logout fijo abajo) */
+.nav-footer{
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 10px;
+}
+.logout{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #e74c3c;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: background-color .2s ease;
+}
+.logout:hover{ background: #c0392b; }
+
+/* ===== Desplaza el contenido para no quedar debajo del nav ===== */
+@media (min-width: 0px){
+  body{ margin: 0; }
+  /* si tu contenedor principal es otro, aplica este padding-left ahí */
+  #root, .app, .container, .page, .page-content{
+    padding-left: 250px; /* espacio del sidebar */
+  }
+}
+
+/* ===== Scrollbar opcional para el cuerpo del nav ===== */
+.nav-body::-webkit-scrollbar{ width: 8px; }
+.nav-body::-webkit-scrollbar-track{ background: rgba(255,255,255,.06); }
+.nav-body::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.25);
+  border-radius: 999px;
+}
+.nav-body::-webkit-scrollbar-thumb:hover{ background: rgba(255,255,255,.38); }

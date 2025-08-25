@@ -1,0 +1,34 @@
+#servicios {
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+#servicios .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+#servicios .card {
+  background: linear-gradient(180deg, var(--surface), #fcfeff);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#servicios .card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+#servicios h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--brand-700);
+}
+
+#servicios p {
+  color: var(--text-600);
+  font-size: 0.95rem;
+}

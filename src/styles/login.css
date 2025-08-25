@@ -1,0 +1,46 @@
+/* ====== Pantalla de Login Pro ====== */
+:root{
+  --brand-600:#1a6fd0; --ring:#1e90ff;
+}
+body{
+  background:
+    radial-gradient(900px 400px at 10% 10%, rgba(30,144,255,.12), transparent 60%),
+    radial-gradient(700px 350px at 100% 0%, rgba(0,196,204,.12), transparent 60%),
+    #f7fbff;
+}
+
+form{
+  width:min(420px, 92%);
+  margin: clamp(2rem, 10vh, 6rem) auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background:#ffffff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:18px;
+  box-shadow: 0 24px 40px rgba(16,24,40,.14);
+}
+
+input{
+  width:400 px; display:block;
+  font:inherit; padding:.85rem 1rem;
+  border-radius: 12px;
+  color:inherit;
+  background:#fff; border:1px solid rgba(15,23,42,.12);
+  box-shadow:0 1px 0 rgba(16,24,40,.02) inset;
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+input:focus{
+  border-color: color-mix(in srgb, var(--ring), white 20%);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ring), transparent 85%);
+  outline:none;
+}
+
+button{
+  width:100%; cursor:pointer;
+  background:var(--brand-600); color:#fff; font-weight:700;
+  border:none; border-radius:999px; padding:.9rem 1rem;
+  box-shadow: 0 8px 20px rgba(26,111,208,.25);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+}
+button:hover{ transform: translateY(-1px); box-shadow: 0 14px 28px rgba(26,111,208,.28); }
+button:active{ transform: translateY(0); }
+form > div{ margin-top:.8rem; color:#0f172a; text-align:center; }

@@ -1,0 +1,136 @@
+/* ====== Global Dental UI (Pro) ====== */
+/* Paleta pensada para marca dental: limpia, moderna */
+:root {
+  --brand-900: #0b3168;
+  --brand-700: #1357a6;
+  --brand-600: #1a6fd0;
+  --brand-500: #1e90ff;
+  --brand-300: #9fd1ff;
+  --brand-100: #e9f4ff;
+
+  --teal-500: #01c2c9;
+  --teal-100: #e6fbfc;
+
+  --bg: #f7fbff;
+  --surface: #ffffff;
+  --text-900: #0f172a;
+  --text-600: #475569;
+  --muted: #94a3b8;
+
+  --ring: var(--brand-500);
+  --radius: 16px;
+  --shadow-lg: 0 20px 40px rgba(16,24,40,.12);
+  --shadow-md: 0 10px 24px rgba(16,24,40,.10);
+  --shadow-sm: 0 6px 12px rgba(16,24,40,.08);
+}
+
+/* Barra lateral (Navbar) */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: var(--brand-900);
+  color: white;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--brand-600);
+}
+
+/* Estilo de los enlaces dentro del navbar */
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar ul li {
+  margin: 15px 0;
+}
+
+.navbar ul li a,
+.navbar ul li button {
+  text-decoration: none;
+  color: #ecf0f1;
+  padding: 10px 20px;
+  display: block;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+}
+
+.navbar ul li a:hover,
+.navbar ul li button:hover {
+  background-color: #16a085;
+  color: white;
+}
+
+/* Botón de cerrar sesión */
+.logout {
+  margin-top: auto;
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+  background-color: #c0392b;
+}
+
+/* ====== Contenedor para Navbar y contenido principal ====== */
+.container {
+  display: flex;
+  height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+  padding-left: 250px; /* Espacio para la barra lateral */
+  overflow-x: visible;
+}
+
+/* Contenido principal */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: var(--bg);
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Estilos de las secciones dentro del contenido principal */
+.section {
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+  text-align: center;
+  margin: 0 0 1rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-600);
+  margin: 0 auto 2.2rem;
+  max-width: 60ch;
+}
+
+
+
+
+
+
+

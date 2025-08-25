@@ -1,19 +1,41 @@
-const Login = () => {
-  return (
-    <div className="flex justify-center items-center h-screen bg-blue-50">
-      <form className="bg-white p-8 rounded shadow-md w-96 space-y-4">
-        <h2 className="text-2xl font-bold text-center text-blue-600">Iniciar Sesión</h2>
-        <input type="email" placeholder="Correo electrónico" className="w-full p-2 border rounded" />
-        <input type="password" placeholder="Contraseña" className="w-full p-2 border rounded" />
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-          Ingresar
-        </button>
-        <p className="text-center text-sm text-gray-600">
-          ¿No tienes cuenta? <a href="/register" className="text-blue-500 hover:underline">Regístrate</a>
-        </p>
-      </form>
-    </div>
-  );
+import "../styles/login.css";
+
+import React, { useState } from "react";
+import { login } from "../services/authServices";
+
+export default function LoginForm() {
+  const [correo, setCorreo] = useState("");
+  const [password, setPassword] = useState("");
+  const [mensaje, setMensaje] = useState("");
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await login({ correo, password });
+    if (res.data.token) {
+      // Guarda el token en el localStorage
+      localStorage.setItem("token", res.data.token);
+      setMensaje("¡Login exitoso! Bienvenido " + res.data.usuario.correo);
+      // Redirige a una página protegida o al home
+      window.location.href = "/";
+    }
+  } catch (error) {
+    setMensaje(error.response?.data?.mensaje || "Error al iniciar sesión.");
+  }
 };
 
-export default Login;
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="form-grid">
+        <input type="email" placeholder="Correo" value={correo} onChange={e => setCorreo(e.target.value)} required />
+      </div>
+      <div className="form-grid">
+              <input type="password" placeholder="Contraseña" value={password} onChange={e => setPassword(e.target.value)} required />
+
+      </div>
+      <button type="submit">Iniciar sesión</button>
+      <div>{mensaje}</div>
+    </form>
+  );
+}
